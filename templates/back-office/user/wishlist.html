@@ -1,0 +1,275 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!--==============================
+        Header Area
+    ==============================-->
+    <header class="header-wrapper header-layout3 header3-margin ">
+        <div class="container py-30">
+            <div class="row align-items-center">
+                <div class="col-6">
+                    <div class="header-logo">
+                        <a href="index.html"><img src="static/assets/img/logo.svg" alt="Foodano"></a>
+                    </div>
+                </div>
+                <div class="col-6 text-end">
+                    <button type="button" class="vs-menu-toggle d-inline-block d-lg-none"><i class="far fa-bars"></i></button>
+                    <div class="head-top-links text-body2 d-none d-lg-block">
+                        <a href="wishlist.html" class="icon-btn has-badge bg3 me-3"><i class="fal fa-heart"></i><span class="badge">0</span></a>
+                        <a href="#" class="icon-btn has-badge bg2 me-4 sideMenuToggler"><i class="fal fa-shopping-cart"></i><span class="badge">0</span></a>
+                        <span class="icon-btn bg4"><i class="fal fa-user"></i></span>
+                        <ul>
+                            <li><a href="login-register.html">Login</a></li>
+                            <li><a href="login-register.html">Register</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container d-none d-lg-block">
+            <div class="header3-inner position-relative">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-xl-7">
+                        <nav class="main-menu menu-style1 mobile-menu-active menu-style2">
+                            <ul>
+                                <li class="menu-item-has-children">
+                                    <a href="index.html">Home</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="index.html">Home Style 1</a></li>
+                                        <li><a href="index-2.html">Home Style 2</a></li>
+                                        <li><a href="index-3.html">Home Style 3</a></li>
+                                        <li><a href="index-4.html">Home Style 4</a></li>
+                                        <li><a href="index-5.html">Home Style 5</a></li>
+                                        <li><a href="index-6.html">Home Style 6</a></li>
+                                        <li><a href="index-7.html">Home Style 7</a></li>
+                                        <li><a href="index-8.html">Home Style 8</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="shop.html">Shop</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="shop.html">Shop</a></li>
+                                        <li><a href="shop-list.html">Shop List</a></li>
+                                        <li><a href="shop-details.html">Shop Details</a></li>
+                                        <li><a href="cart.html">Shopping Cart</a></li>
+                                        <li><a href="checkout.html">Check Out</a></li>
+                                        <li><a href="wishlist.html">Wishlist</a></li>
+                                        <li><a href="login-register.html">Login & Register</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="blog.html">Blog</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="blog.html">Blog</a></li>
+                                        <li><a href="blog-list.html">Blog List</a></li>
+                                        <li><a href="blog-grid.html">Blog Grid</a></li>
+                                        <li><a href="blog-grid-sidebar.html">Blog Grid Sidebar</a></li>
+                                        <li><a href="blog-masonry.html">Blog Masonry</a></li>
+                                        <li><a href="blog-details.html">Blog Details</a></li>
+                                    </ul>
+                                </li>
+                                <li class="mega-menu-wrap menu-item-has-children">
+                                    <a href="#">Pages</a>
+                                    <ul class="mega-menu">
+                                        <li><a href="shop.html">Pagelist 1</a>
+                                            <ul>
+                                                <li><a href="index.html">Home Style 1</a></li>
+                                                <li><a href="index-2.html">Home Style 2</a></li>
+                                                <li><a href="index-3.html">Home Style 3</a></li>
+                                                <li><a href="index-4.html">Home Style 4</a></li>
+                                                <li><a href="index-5.html">Home Style 5</a></li>
+                                                <li><a href="index-6.html">Home Style 6</a></li>
+                                                <li><a href="index-7.html">Home Style 7</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Pagelist 2</a>
+                                            <ul>
+                                                <li><a href="index-8.html">Home Style 8</a></li>
+                                                <li><a href="about.html">About</a></li>
+                                                <li><a href="service.html">Services</a></li>
+                                                <li><a href="team.html">Team</a></li>
+                                                <li><a href="faq.html">FAQ Page</a></li>
+                                                <li><a href="contact.html">Contact Us</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Pagelist 3</a>
+                                            <ul>
+                                                <li><a href="blog.html">Blog</a></li>
+                                                <li><a href="blog-list.html">Blog List</a></li>
+                                                <li><a href="blog-grid.html">Blog Grid</a></li>
+                                                <li><a href="blog-grid-sidebar.html">Blog Grid Sidebar</a></li>
+                                                <li><a href="blog-masonry.html">Blog Masonry</a></li>
+                                                <li><a href="blog-details.html">Blog Details</a></li>
+                                                <li><a href="error.html">Error Page</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Pagelist 4</a>
+                                            <ul>
+                                                <li><a href="shop.html">Shop</a></li>
+                                                <li><a href="shop-list.html">Shop List</a></li>
+                                                <li><a href="shop-details.html">Shop Details</a></li>
+                                                <li><a href="cart.html">Shopping Cart</a></li>
+                                                <li><a href="checkout.html">Check Out</a></li>
+                                                <li><a href="wishlist.html">Wishlist</a></li>
+                                                <li><a href="login-register.html">Login / Register</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="contact.html">Contact Us</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-lg-6 col-xl-5">
+                        <form action="#" class="header-search">
+                            <input type="text" placeholder="Search your product" class="form-control">
+                            <button type="submit" class="vs-btn">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--==============================
+    Breadcumb
+============================== -->
+    <div class="breadcumb-wrapper breadcumb-layout1 bg-fluid pt-200 pb-200" data-bg-src="static/assets/img/breadcumb/breadcumb-img-1.jpg">
+        <div class="container">
+            <div class="breadcumb-content text-center">
+                <h1 class="breadcumb-title">Wishlist</h1>
+                <ul class="breadcumb-menu-style1 mx-auto">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active">Wishlist</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class=" space">
+        <div class="container">
+            <div class="tinv-wishlist">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="product-cb">#</th>
+                            <th class="product-name">Product Name</th>
+                            <th class="product-price">Unit Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for wish in wish_list %}
+                        <tr class="wishlistitem">
+                            <td class="product-cb">{{ forloop.counter }}</td>
+                            <td class="product-name"><a href="shop-details.html">{{ wish.product.name }}</a></td>
+                            <td class="product-price"><span class="amount">{{ wish.product.price }}</span></td>
+                            <td class="product-action"><button class="button vs-btn"><i class="fal fa-shopping-cart"></i><a href="{% url 'addProductToCart' wish.product.id %} ">Add to Cart</a></button></td>
+                            <td class="product-action"><button  class="button vs-btn"><i class="fal fa-trash-alt"><a href="{% url 'delWish' wish.id %}">Delete</a></i></button></td>
+                        </tr>
+                        {% endfor %}
+                </table>
+                <div class="social-buttons">
+                    <span>Share on</span>
+                    <ul>
+                        <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#" title="Pinterest"><i class="fab fa-pinterest-p"></i></a></li>
+                        <li><a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a></li>
+                        <li><a href="#" title="Clipboard"><i class="far fa-clipboard"></i></a></li>
+                        <li><a href="#" title="Email"><i class="far fa-envelope"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--==============================
+			Footer Area
+	==============================-->
+    <div class="bg2" data-bg-src="static/assets/img/footer/footer-bg-1.jpg">
+        <!--==============================
+    Subscribe Area
+    ==============================-->
+        <section class="vs-newsletter-wrpper   ">
+            <div class="container">
+                <div class="inner-wrap1 bg-fluid px-70 py-70" data-bg-src="static/assets/img/bg/newsletter-bg-1-1.png">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-xl-6">
+                            <div class="form-title mb-30 mb-xl-0 text-center text-xl-start">
+                                <span class="sub-title3">Get Connected</span>
+                                <h2 class="h1 mb-0 lh-1">Subscribe <span class="fw-light text-theme">Newsletter</span></h2>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-xl-6">
+                            <form action="#" class="newsletter-style1">
+                                <div class="form-group m-0">
+                                    <input type="text" placeholder="Enter Your mail" class="form-control">
+                                    <button class="vs-btn style2">Subscribe Now</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer-wrapper footer-layout1">
+            <div class="container">
+                <div class="widget-area pt-100">
+                    <div class="row align-items-start justify-content-between">
+                        <div class="col-sm-6 col-lg-4 col-xl-3">
+                            <div class="widget footer-widget  ">
+                                <h3 class="widget_title">Contact Us</h3>
+                                <div class="vs-widget-about">
+                                    <p class="fs-md">6Fifth Avenue 5501, Broadway, New York Morris Street <br> London 1234</p>
+                                    <p class="mb-1 link-inherit"><i class="fas fa-paper-plane me-3"></i><a href="mailto:foodano@example.com">foodano@example.com</a></p>
+                                    <p class="mb-0 link-inherit"><i class="fal fa-fax me-3"></i><a href="tel:+123456789000">+(123) 4567 89000</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-2 col-xl-2">
+                            <div class="widget widget_nav_menu  footer-widget  ">
+                                <h3 class="widget_title">Useful Links</h3>
+                                <div class="menu-all-pages-container">
+                                    <ul class="menu">
+                                        <li><a href="index.html">Home</a></li>
+                                        <li><a href="about.html">About us</a></li>
+                                        <li><a href="blog.html">Blogs</a></li>
+                                        <li><a href="error.html">Terms Of Service</a></li>
+                                        <li><a href="error.html">Privacy Policy</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-2 col-xl-2">
+                            <div class="widget  footer-widget  ">
+                                <h3 class="widget_title">Follow Us Now</h3>
+                                <div class="footer-social-links">
+                                    <ul>
+                                        <li><a href="htttps://google.com"><i class="fab fa-facebook-f"></i>facebook</a></li>
+                                        <li><a href="htttps://google.com"><i class="fab fa-twitter"></i>twitter</a></li>
+                                        <li><a href="htttps://google.com"><i class="fab fa-behance"></i>Behance</a></li>
+                                        <li><a href="htttps://google.com"><i class="fal fa-basketball-ball"></i>dribvble</a></li>
+                                        <li><a href="htttps://google.com"><i class="fab fa-linkedin-in"></i>linkedin</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4 col-xl-4">
+
+
+                            <div class="widget footer-widget   ">
+                                <h3 class="widget_title">Get Direction</h3>
+                                <div class="footer-map pt-1">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.1583088354!2d-74.11976389828038!3d40.697663748695746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1612886249367!5m2!1sen!2sbd" style="border:0;" allowfullscreen="" aria-hidden="false"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright text-center pb-35">
+                    <p class="mb-0 link-inherit">Copyright &copy; 2022 <a href="index.html">Foodano</a> - All Rights Reserved by <a href="https://themeforest.net/user/vecuro_themes">Vecuro</a></p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    {% endblock %}

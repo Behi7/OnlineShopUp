@@ -18,7 +18,7 @@ def myCart(request):
 def addProductToCart(request, id):
     quantity = request.GET.get('quantity', 1)
     product = models.Product.objects.get(id=id)
-    cart = models.Cart.objects.get_or_create(author=request.user, is_active=True)
+    cart, _ = models.Cart.objects.get_or_create(author=request.user, is_active=True)
     try:
         cart_product = models.CartProduct.objects.get(cart=cart.id, product=product.id)
         cart_product.quantity+=quantity
@@ -29,13 +29,13 @@ def addProductToCart(request, id):
             cart=cart,
             quantity=quantity
         )
-    return redirect('/')
+    return redirect('/main/')
 
 
-def substractProductFromCart(request):
-    code = request.GET['code']
+def substractProductFromCart(request, id):
+    code = id
     quantity = request.GET['quantity']
-    product_cart = models.CartProduct.objects.get(generate_code=code)
+    product_cart = models.CartProduct.objects.get(id=code)
     product_cart.quantity -= quantity
     product_cart.save()
     if not product_cart.quantity:
@@ -46,10 +46,10 @@ def substractProductFromCart(request):
 def deleteProductCart(request, id):
     product_cart = models.CartProduct.objects.get(id=id)
     product_cart.delete()
-    return redirect('/')
+    return redirect('/main/cart/list/')
 
 
-def createOrder(request):
+def createOrder(request, id):
     cart = models.Cart.objects.get(
         id = id
         )

@@ -453,12 +453,12 @@
                             <td data-title="Quantity">
                                 <div class="quantity">
                                     <button class="quantity-minus qut-btn"><i class="far fa-minus"></i></button>
-                                    <input type="number" class="qty-input" value="1" min="1" max="99">
+                                    <input type="number" name="quantity" class="qty-input" value="1" min="1" max="99">
                                     <button class="quantity-plus qut-btn"><i class="far fa-plus"></i></button>
                                 </div>
                             </td>
                             <td data-title="Total">
-                                <span class="amount"><bdi><span>$</span>18</bdi></span>
+                                <span class="amount"><bdi><span>$</span>{{ product.product.price }}</bdi></span>
                             </td>
                             <td data-title="Remove">
                                 <a href="{% url 'deleteProductCart' product.id %}" class="remove"><i class="fal fa-trash-alt"></i></a>
@@ -473,7 +473,7 @@
                                     <button type="submit" class="vs-btn rounded-1 shadow-none">Apply Coupon</button>
                                 </div>
                                 <button type="submit" class="vs-btn style2 rounded-1 shadow-none">Update cart</button>
-                                <a href="shop-details.html" class="vs-btn rounded-1 shadow-none">Continue Shopping</a>
+                                <a href="{% url 'index' %}" class="vs-btn rounded-1 shadow-none">Continue Shopping</a>
                                 <div class="row justify-content-end">
                                     <div class="col-md-8 col-lg-7 col-xl-6">
                                         <h2 class="h4 summary-title">Cart Totals</h2>
@@ -544,7 +544,7 @@
                                             </tfoot>
                                         </table>
                                         <div class="wc-proceed-to-checkout mb-30">
-                                            <a href="shop-details.html" class="vs-btn rounded-1 shadow-none">Proceed to checkout</a>
+                                            <a href="{% url 'createOrder' cart.id %}" class="vs-btn rounded-1 shadow-none">Proceed to checkout</a>
                                         </div>
                                     </div>
                                 </div>

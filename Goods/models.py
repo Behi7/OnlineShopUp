@@ -6,7 +6,7 @@ import string
 class Banner(models.Model):
     title = models.CharField(max_length=255)
     sub_title = models.CharField(max_length=255, blank=True, null=True)
-    img = models.ImageField(upload_to='banners/'),
+    img = models.ImageField(upload_to='banners')
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
@@ -31,6 +31,7 @@ class Product(models.Model):
     price:float = models.DecimalField(max_digits=8, decimal_places=2)
     category:Category = models.ForeignKey(Category, on_delete=models.CASCADE)
     description:str = models.TextField()
+    img = models.ImageField(blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -76,3 +77,22 @@ class Order(models.Model):
 
     def __str__(self):
         return self.full_name
+    
+
+class Info(models.Model):
+    phone = models.CharField(max_length=233)
+    region = models.TextField()
+    email = models.URLField(max_length=233)
+    facebook = models.URLField(max_length=233)
+    twitter = models.URLField(max_length=233)
+    linking = models.URLField(max_length=233)
+
+
+class WishList(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+
+    def __str__(self):
+        return f"{self.user.username}, {self.product.name}"
+
