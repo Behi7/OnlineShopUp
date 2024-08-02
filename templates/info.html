@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>banner yaratish</title>
+    <style>
+        body {
+            background-color: #f2f8ef;
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"], input[type="number"], input[type="file"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+
+        button[type="submit"] {
+            background-color: #00ff08;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #00ff0d;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="phone" placeholder="phone">
+        <input type="text" name="region" placeholder="region">
+        <textarea name="info" id="" placeholder="info"></textarea>
+        <input type="email" name="email" placeholder="email">
+        <input type="facebook" name="facebook" placeholder="facebook">
+        <button type="submit">saqlash</button>
+    </form>
+</body>
+</html>

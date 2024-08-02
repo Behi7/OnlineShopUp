@@ -6,7 +6,7 @@ import string
 class Banner(models.Model):
     title = models.CharField(max_length=255)
     sub_title = models.CharField(max_length=255, blank=True, null=True)
-    img = models.ImageField(upload_to='banners')
+    images = models.ImageField()
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
@@ -82,10 +82,11 @@ class Order(models.Model):
 class Info(models.Model):
     phone = models.CharField(max_length=233)
     region = models.TextField()
-    email = models.URLField(max_length=233)
-    facebook = models.URLField(max_length=233)
-    twitter = models.URLField(max_length=233)
-    linking = models.URLField(max_length=233)
+    text = models.TextField()
+    email = models.URLField(max_length=233, blank=True, null=True)
+    facebook = models.URLField(max_length=233, blank=True, null=True)
+    twitter = models.URLField(max_length=233, blank=True, null=True)
+    linking = models.URLField(max_length=233, blank=True, null=True)
 
 
 class WishList(models.Model):
@@ -96,3 +97,24 @@ class WishList(models.Model):
     def __str__(self):
         return f"{self.user.username}, {self.product.name}"
 
+
+class EnterProduct(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    enter_quantity = models.IntegerField(default=1)
+    old_quantity = models.IntegerField(blank=True, null=True)
+    date = models.DateField(auto_now_add=True, blank=True, null=True)
+    time = models.TimeField(auto_now_add=True, blank=True, null=True)
+    info = models.TextField()
+
+    def __str__(self) -> str:
+        return self.product.name
+    
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.old_quantity = self.product.quantity
+            self.product.quantity = self.enter_quantity
+        else:
+            self.enter_quantity -= EnterProduct.objects.get(id = self.id).enter_quantity
+            self.enter_quantity += self.enter_quantity
+        self.save()
+        super(Product, self).save(*args, **kwargs)

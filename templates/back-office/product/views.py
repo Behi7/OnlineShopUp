@@ -61,19 +61,6 @@ def deleteProduct(request, id):
     models.Product.objects.get(id=id).delete()
     return redirect('listProduct')
 
-def productlists(request):
-    alls = models.Product.objects.all()
-    context = {}
-    context['products'] = alls
-    try:
-        wishProducts = models.WishList.objects.filter(user = request.user)
-        for wish in wishProducts:
-            for product in alls:
-                if wish.product.id == product.id:
-                    product.is_active = True
-    except:
-        ...
-    return render(request, 'shop.html', context)
 
 def storyEnter(request):
     list_e = models.EnterProduct.objects.all()
@@ -108,20 +95,3 @@ def updateEnter(request):
 def enterDelete(request, id):
     models.EnterProduct.objects.get(id=id).delete()
     return redirect('enter')
-
-def addProductToCart(request, id):
-    quantity = request.GET.get('quantity', 1)
-    product = models.Product.objects.get(id=id)
-    cart, _ = models.Cart.objects.get_or_create(author=request.user, is_active=True)
-    try:
-        cart_product = models.CartProduct.objects.get(cart=cart.id, product=product.id)
-        cart_product.quantity+=quantity
-        cart_product.save()
-    except:
-        cart_product = models.CartProduct.objects.create(
-            product=product, 
-            cart=cart,
-            quantity=quantity
-        )
-    return redirect('/main/back-office/product/shop')
-

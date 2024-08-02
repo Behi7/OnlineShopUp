@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+
     <!--==============================
         Header Area
     ==============================-->
@@ -27,42 +28,20 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col col-lg-auto">
                         <div class="header-logo">
-                            <a href="index.html"><img src="{% static 'assets/img/logo.svg' %}" alt="Foodano"></a>
+                            <a href="{% url 'index' %}"><img src="{% static 'assets/img/logo.svg' %}" alt="Foodano"></a>
                         </div>
                     </div>
                     <div class="col-auto">
                         <nav class="main-menu mobile-menu-active menu-style2">
                             <ul>
-                                <li class="menu-item-has-children">
+                                <li class="menu-item-has">
                                     <a href="{% url 'index' %}">Home</a>
-                                    <ul class="sub-menu">
-                                    </ul>
                                 </li>
-                                <li class="menu-item-has-children">
-                                    <a href="shop.html">Shop</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="shop.html">Shop</a></li>
-                                        <li><a href="shop-list.html">Shop List</a></li>
-                                        <li><a href="shop-details.html">Shop Details</a></li>
-                                        <li><a href="cart.html">Shopping Cart</a></li>
-                                        <li><a href="checkout.html">Check Out</a></li>
-                                        <li><a href="wishlist.html">Wishlist</a></li>
-                                        <li><a href="{% url 'login' %}">Login & Register</a></li>
-                                    </ul>
+                                <li class="menu-item-has">
+                                    <a href="{% url 'shop' %}">Shop</a>
                                 </li>
-                                <li class="menu-item-has-children">
-                                    <a href="blog.html">Blog</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="blog-list.html">Blog List</a></li>
-                                        <li><a href="blog-grid.html">Blog Grid</a></li>
-                                        <li><a href="blog-grid-sidebar.html">Blog Grid Sidebar</a></li>
-                                        <li><a href="blog-masonry.html">Blog Masonry</a></li>
-                                        <li><a href="blog-details.html">Blog Details</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="contact.html">Contact Us</a>
+                                <li class="menu-item-has">
+                                    <a href="{% url 'login' %}">Account</a>
                                 </li>
                             </ul>
                         </nav>
@@ -92,40 +71,38 @@
     <div class="  ">
         <div class="vs-hero-carousel hero-layout6" data-globalbgimage="{% static 'assets/img/nature.jpg' %}" data-height="810" data-container="1900" data-slidertype="responsive">
             <!-- Slide 1-->
-             
+            {% for banner in banners %}
             <div class="ls-slide" data-ls="duration:12000; transition2d:5; kenburnsscale:1.2;">
-                {% for banner in banners %}
-                <img width="781" height="534" src="{{ banner.img.url }}" class="ls-l ls-hide-tablet ls-hide-phone ls-hide-hd" alt="image" style="top:257px; left:1119px; background-size:inherit; background-position:inherit;" data-ls="offsetxin:100; durationin:1500; delayin:500; static:forever;">
-                <img width="781" height="534" src="{{ banner.img.url }}" class="ls-l ls-hide-desktop" alt="image" style="top:237px; left:1121px; background-size:inherit; background-position:inherit;" data-ls="offsetxin:100; durationin:1500; delayin:500; static:forever;">
-                <img width="658" height="543" src="{{ banner.img.url }}" class="ls-l ls-hide-tablet ls-hide-phone" alt="image" style="top:215px; left:969px; background-size:inherit; background-position:inherit;">
+                <img width="781" height="534" src="{{ banner.images.url }}" class="ls-l ls-hide-desktop" style="top:237px; left:1121px; background-size:inherit; background-position:inherit;" data-ls="offsetxin:100; durationin:1500; delayin:500; static:forever;">
+                <img width="658" height="543" src="{{ banner.images.url }}" class="ls-l ls-hide-tablet ls-hide-phone" style="top:215px; left:969px; background-size:inherit; background-position:inherit;">
                 <p style="top:365px; left:375px; font-weight:700; background-size:inherit; background-position:inherit; font-size:35px; font-family:Amatic SC; color:#ffffff; letter-spacing:1px;" class="ls-l ls-hide-tablet ls-hide-phone" data-ls="offsetyin:-100; durationin:1500; delayin:800; easingin:easeOutQuint;">{{ banner.title }}</p>
                 <p style="top:405px; left:375px; font-weight:700; background-size:inherit; background-position:inherit; font-size:65px; color:#fcd55c; font-family:'Advent Pro', sans-serif;" class="ls-l ls-hide-tablet ls-hide-phone" data-ls="offsetxin:-200; durationin:1500; easingin:easeOutQuint;">{{ banner.sub_title }}</p>
+                <p style="top:485px; left:375px; font-weight:700; background-size:inherit; background-position:inherit; font-size:65px; color:#fcd55c; font-family:'Advent Pro', sans-serif;" class="ls-l ls-hide-tablet ls-hide-phone" data-ls="offsetxin:-200; durationin:1500; delayin:400; easingin:easeOutQuint;"></p>
                 <div style="top:611px; left:375px; background-size:inherit; background-position:inherit;" class="ls-l ls-hide-tablet ls-hide-phone" data-ls="offsetyin:100; durationin:1500; delayin:800; easingin:easeOutQuint; offsetyout:200; durationout:1500; easingout:easeOutQuint;">
-                    <a href="shop.html" class="vs-btn style5 ls-btn">Start Shopping<i class="far fa-angle-right"></i></a>
+                    <a href="{% url 'shop' %}" class="vs-btn style5 ls-btn">Start Shopping<i class="far fa-angle-right"></i></a>
                 </div>
-                <img width="658" height="543" src="{{ banner.img.url }}" class="ls-l ls-hide-desktop" alt="image" style="top:54px; left:916px; background-size:inherit; background-position:inherit; width:835px; height:689px;">
+                <img width="658" height="543" src="{{ banner.img.url }}" class="ls-l ls-hide-desktop" style="top:54px; left:916px; background-size:inherit; background-position:inherit; width:835px; height:689px;">
+                <p style="top:150px; left:100px; font-weight:700; background-size:inherit; background-position:inherit; font-family:Amatic SC; color:#ffffff; letter-spacing:1px; font-size:70px;" class="ls-l ls-hide-desktop ls-hide-phone" data-ls="offsetyin:-100; durationin:1500; delayin:800; easingin:easeOutQuint;">{{banner.title }}</p>
                 <p style="top:240px; left:100px; font-weight:700; background-size:inherit; background-position:inherit; font-size:100px; color:#fcd55c; font-family:'Advent Pro', sans-serif;" class="ls-l ls-hide-desktop ls-hide-phone" data-ls="offsetxin:-200; durationin:1500; easingin:easeOutQuint;">{{ banner.sub_title }}</p>
+                <p style="top:358px; left:100px; font-weight:700; background-size:inherit; background-position:inherit; font-size:100px; color:#fcd55c; font-family:'Advent Pro', sans-serif;" class="ls-l ls-hide-desktop ls-hide-phone" data-ls="offsetxin:-200; durationin:1500; delayin:400; easingin:easeOutQuint;"></p>
                 <span style="top:550px; left:100px; font-weight:700; background-size:inherit; background-position:inherit; padding-right:60px; padding-bottom:30px; padding-left:60px; font-family:'Lato',sans-serif; font-size:30px; color:#fff; border-radius:9999px; border-top:3px solid #fff; border-right:3px solid #fff; border-bottom:3px solid #fff; border-left:3px solid #fff; padding-top:30px;" class="ls-l ls-hide-desktop ls-hide-phone" data-ls="offsetyin:200; durationin:1500; delayin:400; easingin:easeOutQuint; offsetyout:200; durationout:1500; easingout:easeOutQuint; hover:true; hovereasingin:easeOutQuint; hoverbgcolor:#ffffff; hovercolor:#76a713;">START SHOPPING</span>
                 <p style="top:120px; left:100px; font-weight:700; background-size:inherit; background-position:inherit; font-size:120px; color:#fcd55c; font-family:'Advent Pro', sans-serif;" class="ls-l ls-hide-desktop ls-hide-tablet" data-ls="offsetxin:-200; durationin:1500; easingin:easeOutQuint;">{{ banner.sub_title }}</p>
-                <span style="top:490px; left:100px; font-weight:700; background-size:inherit; background-position:inherit; padding-right:100px; padding-bottom:50px; padding-left:100px; font-family:'Lato',sans-serif; font-size:60px; color:#fff; border-radius:9999px; border-top:3px solid #fff; border-right:3px solid #fff; border-bottom:3px solid #fff; border-left:3px solid #fff; padding-top:50px;" class="ls-l ls-hide-desktop ls-hide-tablet" data-ls="offsetyin:200; durationin:1500; delayin:400; easingin:easeOutQuint; offsetyout:200; durationout:1500; easingout:easeOutQuint; hover:true; hovereasingin:easeOutQuint; hoverbgcolor:#ffffff; hovercolor:#76a713;">START SHOPPING</span>
-                <p style='top:420px; left:1760px; text-align:center; font-weight:700; background-size:inherit; background-position:inherit; font-size:16px; font-family:"Lato", sans-serif; line-height:40px; width:40px; height:40px; border-radius:100%; color:#ffffff; background-color:#76a713; z-index:1000;' class="ls-l ls-hide-tablet ls-hide-phone" data-ls="hover:true; hoverbgcolor:#76a713; hovercolor:#ffffff;">{{banner.id}}</p>
-                <a class="ls-l ls-hide-tablet ls-hide-phone" href="#{{banner.id}}" target="_self" data-ls="hover:true; hoverbgcolor:#76a713; hovercolor:#ffffff; static:forever;">
-                    <p style='top:420px; left:1760px; text-align:center; font-weight:700; background-size:inherit; background-position:inherit; font-size:16px; font-family:"Lato", sans-serif; line-height:40px; width:40px; height:40px; border-radius:100%; color:#000000; background-color:#ffffff;' class="">{{banner.id}}</p>
+                <p style="top:270px; left:100px; font-weight:700; background-size:inherit; background-position:inherit; font-size:120px; color:#fcd55c; font-family:'Advent Pro', sans-serif;" class="ls-l ls-hide-desktop ls-hide-tablet" data-ls="offsetxin:-200; durationin:1500; delayin:400; easingin:easeOutQuint;"></p>
+                <span style="top:490px; left:100px; font-weight:700; background-size:inherit; background-position:inherit; padding-right:100px; padding-bottom:50px; padding-left:100px; font-family:'Lato',sans-serif; font-size:60px; color:#fff; border-radius:9999px; border-top:3px solid #fff; border-right:3px solid #fff; border-bottom:3px solid #fff; border-left:3px solid #fff; padding-top:50px;" class="ls-l ls-hide-desktop ls-hide-tablet" data-ls="offsetyin:200; durationin:1500; delayin:400; easingin:easeOutQuint; offsetyout:200; durationout:1500; easingout:easeOutQuint; hover:true; hovereasingin:easeOutQuint; hoverbgcolor:#ffffff; hovercolor:#76a713;">START SHOPPING</span>                </a>
                 </a>
-                {% endfor %}
-                <img width="126" height="151" src="{% static 'assets/img/hero/hero-6-leaf-4.png' %}" class="ls-l" alt="image" style="top:-300px; left:642px; background-size:inherit; background-position:inherit;" data-ls="offsetyin:top; durationin:1500; delayin:15000; easingin:easeOutQuint; rotatein:random(-160,160); loop:true; loopoffsety:150sh; loopduration:10000; looprotate:random(-180,180); loopcount:-1; looprepeatdelay:6000; static:forever;">
-                <img width="114" height="97" src="{% static 'assets/img/hero/hero-6-leaf-1.png' %}" class="ls-l" alt="leaf" style="top:-300px; left:1500px; background-size:inherit; background-position:inherit;" data-ls="offsetyin:top; durationin:1500; delayin:2000; easingin:easeOutQuint; rotatein:random(-160,160); loop:true; loopoffsety:150sh; loopduration:10000; looprotate:random(-180,180); loopcount:-1; looprepeatdelay:6000; static:forever;">
-                <img width="60" height="66" src="{% static 'assets/img/hero/hero-6-leaf-3.png' %}" class="ls-l" alt="image" style="top:-300px; left:50px; background-size:inherit; background-position:inherit;" data-ls="offsetyin:top; durationin:1500; delayin:5000; easingin:easeOutQuint; rotatein:random(-160,160); loop:true; loopoffsety:150sh; loopduration:10000; looprotate:random(-180,180); loopcount:-1; looprepeatdelay:6000; static:forever;">
-                <img width="115" height="96" src="{% static 'assets/img/hero/hero-6-leaf-2.png' %}" class="ls-l" alt="leaf" style="top:-300px; left:1200px; background-size:inherit; background-position:inherit;" data-ls="offsetyin:top; durationin:1500; delayin:4000; easingin:easeOutQuint; rotatein:random(-160,160); loop:true; loopoffsety:150sh; loopduration:10000; looprotate:random(-180,180); loopcount:-1; looprepeatdelay:6000; static:forever;">
-                <img width="60" height="66" src="{% static 'assets/img/hero/hero-6-leaf-3.png' %}" class="ls-l" alt="image" style="top:-300px; left:489px; background-size:inherit; background-position:inherit;" data-ls="offsetyin:top; durationin:1500; delayin:6000; easingin:easeOutQuint; rotatein:random(-160,160); loop:true; loopoffsety:150sh; loopduration:10000; looprotate:random(-180,180); loopcount:-1; looprepeatdelay:3000; static:forever;">
-                <img width="114" height="97" src="{% static 'assets/img/hero/hero-6-leaf-1.png' %}" class="ls-l" alt="leaf" style="top:-300px; left:1200px; background-size:inherit; background-position:inherit;" data-ls="offsetyin:top; durationin:1500; delayin:7000; easingin:easeOutQuint; rotatein:random(-160,160); loop:true; loopoffsety:150sh; loopduration:10000; looprotate:random(-180,180); loopcount:-1; looprepeatdelay:3000; static:forever;">
-                <img width="115" height="96" src="{% static 'assets/img/hero/hero-6-leaf-2.png' %}" class="ls-l" alt="leaf" style="top:-300px; left:200px; background-size:inherit; background-position:inherit;" data-ls="offsetyin:top; durationin:1500; delayin:10000; easingin:easeOutQuint; rotatein:random(-160,160); loop:true; loopoffsety:150sh; loopduration:10000; looprotate:random(-180,180); loopcount:-1; looprepeatdelay:4000; static:forever;">
-                <img width="115" height="96" src="{% static 'assets/img/hero/hero-6-leaf-2.png' %}" class="ls-l" alt="leaf" style="top:-300px; left:800px; background-size:inherit; background-position:inherit;" data-ls="offsetyin:top; durationin:1500; delayin:8000; easingin:easeOutQuint; rotatein:random(-160,160); loop:true; loopoffsety:150sh; loopduration:10000; looprotate:random(-180,180); loopcount:-1; looprepeatdelay:4000; static:forever;">
+                <img width="126" height="151" src="{% static 'assets/img/hero/hero-6-leaf-4.png' %}" class="ls-l"  style="top:-300px; left:642px; background-size:inherit; background-position:inherit;" data-ls="offsetyin:top; durationin:1500; delayin:15000; easingin:easeOutQuint; rotatein:random(-160,160); loop:true; loopoffsety:150sh; loopduration:10000; looprotate:random(-180,180); loopcount:-1; looprepeatdelay:6000; static:forever;">
+                <img width="114" height="97" src="{% static 'assets/img/hero/hero-6-leaf-1.png' %}" class="ls-l" style="top:-300px; left:1500px; background-size:inherit; background-position:inherit;" data-ls="offsetyin:top; durationin:1500; delayin:2000; easingin:easeOutQuint; rotatein:random(-160,160); loop:true; loopoffsety:150sh; loopduration:10000; looprotate:random(-180,180); loopcount:-1; looprepeatdelay:6000; static:forever;">
+                <img width="60" height="66" src="{% static 'assets/img/hero/hero-6-leaf-3.png' %}" class="ls-l"  style="top:-300px; left:50px; background-size:inherit; background-position:inherit;" data-ls="offsetyin:top; durationin:1500; delayin:5000; easingin:easeOutQuint; rotatein:random(-160,160); loop:true; loopoffsety:150sh; loopduration:10000; looprotate:random(-180,180); loopcount:-1; looprepeatdelay:6000; static:forever;">
+                <img width="115" height="96" src="{% static 'assets/img/hero/hero-6-leaf-2.png' %}" class="ls-l" style="top:-300px; left:1200px; background-size:inherit; background-position:inherit;" data-ls="offsetyin:top; durationin:1500; delayin:4000; easingin:easeOutQuint; rotatein:random(-160,160); loop:true; loopoffsety:150sh; loopduration:10000; looprotate:random(-180,180); loopcount:-1; looprepeatdelay:6000; static:forever;">
+                <img width="60" height="66" src="{% static 'assets/img/hero/hero-6-leaf-3.png' %}" class="ls-l"  style="top:-300px; left:489px; background-size:inherit; background-position:inherit;" data-ls="offsetyin:top; durationin:1500; delayin:6000; easingin:easeOutQuint; rotatein:random(-160,160); loop:true; loopoffsety:150sh; loopduration:10000; looprotate:random(-180,180); loopcount:-1; looprepeatdelay:3000; static:forever;">
+                <img width="114" height="97" src="{% static 'assets/img/hero/hero-6-leaf-1.png' %}" class="ls-l" style="top:-300px; left:1200px; background-size:inherit; background-position:inherit;" data-ls="offsetyin:top; durationin:1500; delayin:7000; easingin:easeOutQuint; rotatein:random(-160,160); loop:true; loopoffsety:150sh; loopduration:10000; looprotate:random(-180,180); loopcount:-1; looprepeatdelay:3000; static:forever;">
+                <img width="115" height="96" src="{% static 'assets/img/hero/hero-6-leaf-2.png' %}" class="ls-l" style="top:-300px; left:200px; background-size:inherit; background-position:inherit;" data-ls="offsetyin:top; durationin:1500; delayin:10000; easingin:easeOutQuint; rotatein:random(-160,160); loop:true; loopoffsety:150sh; loopduration:10000; looprotate:random(-180,180); loopcount:-1; looprepeatdelay:4000; static:forever;">
+                <img width="115" height="96" src="{% static 'assets/img/hero/hero-6-leaf-2.png' %}" class="ls-l" style="top:-300px; left:800px; background-size:inherit; background-position:inherit;" data-ls="offsetyin:top; durationin:1500; delayin:8000; easingin:easeOutQuint; rotatein:random(-160,160); loop:true; loopoffsety:150sh; loopduration:10000; looprotate:random(-180,180); loopcount:-1; looprepeatdelay:4000; static:forever;">
             </div>
+            {% endfor %}
         </div>
     </div>
-
-
+    
     <section class="sec-bg3 vs-shop-wrapper   " data-bg-src="{% static 'assets/img/shape/bg-00778.png' %}">
         <div class="section-title text-center">
             <div class="sec-icon"><img src="{% static 'assets/img/icons/sec-icon-2.png' %}" alt="icon"></div>
@@ -172,323 +149,13 @@
                             </div>
                         </div>
                         {% endfor %}
-
                 </div>
             </div>
             <div class="bottom-btn">
-                <a href="shop.html" class="vs-btn style3">All Product<i class="fas fa-angle-right"></i></a>
+                <a href="{% url 'shop' %}" class="vs-btn style3">All Product<i class="fas fa-angle-right"></i></a>
             </div>
         </div>
     </section>
-    <!--==============================
-    Latest Arrivals
-    ==============================-->
-    <section class=" mb-60 mb-xl-0">
-        <div class="container">
-            <div class="section-title text-center">
-                <div class="sec-icon"><img src="{% static 'assets/img/icons/sec-icon-2.png' %}" alt="icon"></div>
-                <span class="sub-title4">Latest Arrivals</span>
-                <h2 class="sec-title3">Deals Of the Day</h2>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-lg-4 order-3 order-lg-1">
-                    <div class="content-style1">
-                        <span class="about-subtitle">Organic, Fruits</span>
-                        <h3 class="about-title">Organic Veggies and Fruits Package</h3>
-                        <p class="about-text">Alienum phaedrum torquatos nec eu, vis detr traxit periculis ex, nihil is in mei. Mei an peri me culaeuripidis, hincartem ei est.</p>
-                        <div class="about-price">$15.00<del>$45.00</del></div>
-                        <div class="product-rating-box">5.0<div class="star-rating" role="img" aria-label="Rated 5.00 out of 5"><span style="width:100%">Rated <strong class="rating">5.00</strong> out of 5</span></div>
-                        </div>
-                        <div>
-                            <a href="cart.html" class="vs-btn style4"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg order-1 order-lg-2">
-                    <div class="img-box3">
-                        <img src="{% static 'assets/img/nature.jpg' %}" alt="About Image">
-                    </div>
-                </div>
-                <div class="col-lg-auto order-2 order-lg-3">
-                    <div class="offer-counter counter-style1" data-offer-date="08/22/2024">
-                        <span class="day">Days</span>
-                        <span class="hour">Hours</span>
-                        <span class="minute">Mins</span>
-                        <span class="second">Secs</span>
-                        <!-- Expire Message -->
-                        <span class="message">Offer closed</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--==============================
-    Feature Area
-    ==============================-->
-    <section class=" space-md-bottom">
-        <div class="container">
-            <div class="row gx-10">
-                <div class="col-md-6 col-lg-3">
-                    <div class="feature-style1">
-                        <div class="feature-icon"><img src="{% static 'assets/img/icons/feature-icon-1-1.png' %}" alt="icon"></div>
-                        <h3 class="feature-title">Easy Returns</h3>
-                        <p class="feature-text">No Questions Asked</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="feature-style1">
-                        <div class="feature-icon"><img src="{% static 'assets/img/icons/feature-icon-1-2.png' %}" alt="icon"></div>
-                        <h3 class="feature-title">Certified Organic</h3>
-                        <p class="feature-text">100% Guarantee</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="feature-style1">
-                        <div class="feature-icon"><img src="{% static 'assets/img/icons/feature-icon-1-3.png' %}" alt="icon"></div>
-                        <h3 class="feature-title">Huge Savings</h3>
-                        <p class="feature-text">At Lowest Price</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="feature-style1">
-                        <div class="feature-icon"><img src="{% static 'assets/img/icons/feature-icon-1-4.png' %}" alt="icon"></div>
-                        <h3 class="feature-title">Easy Returnsz</h3>
-                        <p class="feature-text">No Questions Asked</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!--==============================
-    Buy Whole Food Online at Real Foods
-    ==============================-->
-    <section class=" space-bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-6 mb-40 mb-xl-0">
-                    <div class="img-box4">
-                        <div class="img-1"><img src="{% static 'assets/img/about/ab-8-1.png' %}" alt="About Image"></div>
-                        <div class="img-2"><img src="{% static 'assets/img/about/ab-8-2.png' %}" alt="About Image"></div>
-                        <div class="content">
-                            <div class="title">Natural Organic</div>
-                            <div class="text">Alienum phaedrum torquat os nec eu, vis detrax.</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6">
-                    <div class="content-style2">
-                        <span class="sub-title4">Certified Organic</span>
-                        <h2 class="sec-title3">Buy Whole Food Online at Real Foods</h2>
-                        <p class="sec-text">Alienum phaedrum torquatos nec eu, vis detrax culis ex, nihis in mei. Mei an periculaeuripidis, hem ei est Alienum Alienum phaedrum tor quato hem ei est Alienum As nec.</p>
-                        <div class="row mt-lg-3 pt-3 gy-4">
-                            <div class="col-md-6">
-                                <div class="vs-product-box3 style2">
-                                    <div class="product-img">
-                                        <a href="shop-details.html"><img src="{% static 'assets/img/shop/product-3-32.png' %}" alt="Product Image" class="w-100"></a>
-                                        <span class="product-tag1">Hot</span>
-                                    </div>
-                                    <div class="actions-btn">
-                                        <a href="{% url 'register' %}" class="icon-btn"><i class="fal fa-user"></i></a>
-                                        <a href="{% static 'assets/img/shop/product-3-32.png' %}" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                                        <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                                        <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-rating-box">5.0<div class="star-rating" role="img" aria-label="Rated 5.00 out of 5"><span style="width:100%">Rated <strong class="rating">5.00</strong> out of 5</span></div>
-                                        </div>
-                                        <h4 class="product-title"><a href="shop-details.html">Amtaste Farmgain Micro</a></h4>
-                                        <span class="price"><strong>$56.00</strong></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="vs-product-box3 style2">
-                                    <div class="product-img">
-                                        <a href="shop-details.html"><img src="{% static 'assets/img/shop/product-3-13.png' %}" alt="Product Image" class="w-100"></a>
-                                    </div>
-                                    <div class="actions-btn">
-                                        <a href="{% static 'assets/img/shop/product-3-13.png' %}" class="icon-btn popup-image"><i class="far fa-search"></i></a>
-                                        <a href="wishlist.html" class="icon-btn"><i class="fal fa-heart"></i></a>
-                                        <a href="cart.html" class="vs-btn style4 cart-btn"><i class="fal fa-cart-plus"></i>Add To Cart</a>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-rating-box">5.0<div class="star-rating" role="img" aria-label="Rated 5.00 out of 5"><span style="width:100%">Rated <strong class="rating">5.00</strong> out of 5</span></div>
-                                        </div>
-                                        <h4 class="product-title"><a href="shop-details.html">Careful Compounds</a></h4>
-                                        <span class="price"><strong>$63.00</strong><del>$99.00</del></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--==============================
-    Subscribe Area
-    ==============================-->
-    <section class="  space" data-bg-src="{% static 'assets/img/bg/newsletter-bg-1-2.jpg' %}">
-        <div class="container">
-            <div class="newsletter-style2" data-bg-src="{% static 'assets/img/shape/newsletter-bg-1-1.png' %}">
-                <div class="shape-1 d-none d-md-block"><img src="{% static 'assets/img/shape/newsletter-s-008.png' %}" alt="shape"></div>
-                <span class="sub-title4">Subscribe and Get new Tips and Updates</span>
-                <h2 class="sec-title3">Subscribe & Get 10% Off</h2>
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Enter Your Email Address....">
-                    <button class="vs-btn style4" type="submit"><i class="fas fa-envelope"></i>Subscribe</button>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--==============================
-        Blog Area
-    ==============================-->
-    <section class="vs-blog-wrapper space-top space-md-bottom">
-        <div class="container">
-            <div class="section-title text-center">
-                <div class="sec-icon"><img src="{% static 'assets/img/icons/sec-icon-2.png' %}" alt="icon"></div>
-                <span class="sub-title4">Tips & News</span>
-                <h2 class="sec-title3">Recent Articles</h2>
-            </div>
-            <div class="row vs-carousel" data-slide-show="3" data-sm-slide-show="1">
-                <div class="col-xl-4">
-                    <div class="vs-blog blog-style1">
-                        <div class="blog-img image-scale-hover">
-                            <a href="blog-details.html"><img src="{% static 'assets/img/blog/blog-4-1.jpg' %}" alt="Blog Image" class="w-100"></a>
-                        </div>
-                        <div class="blog-content">
-                            <div class="tags">
-                                <a href="blog-details.html">Organic</a>
-                            </div>
-                            <a href="blog-details.html" class="blog-date">Dec 22,2022</a>
-                            <h3 class="blog-title"><a href="blog-details.html">From its medieval origins to the digital </a></h3>
-                            <p class="blog-text">Nvidunt ut labore et dolore magna aliqu accusam et justo duo dolores et ea rebu Lorem ipsum dolor sit ametrit.</p>
-                        </div>
-                        <div class="meta-box">
-                            <a href="blog-details.html">Posted By Admin</a>
-                            <a href="blog-details.html">5 Comments</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4">
-                    <div class="vs-blog blog-style1">
-                        <div class="blog-img image-scale-hover">
-                            <a href="blog-details.html"><img src="{% static 'assets/img/blog/blog-4-2.jpg' %}" alt="Blog Image" class="w-100"></a>
-                        </div>
-                        <div class="blog-content">
-                            <div class="tags">
-                                <a href="blog-details.html">Popular</a>
-                            </div>
-                            <a href="blog-details.html" class="blog-date">Dec 18,2022</a>
-                            <h3 class="blog-title"><a href="blog-details.html">Latin derived from Cicero's 1st-century</a></h3>
-                            <p class="blog-text">Nvidunt ut labore et dolore magna aliqu accusam et justo duo dolores et ea rebu Lorem ipsum dolor sit ametrit.</p>
-                        </div>
-                        <div class="meta-box">
-                            <a href="blog-details.html">Posted By Ripon</a>
-                            <a href="blog-details.html">3 Comments</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4">
-                    <div class="vs-blog blog-style1">
-                        <div class="blog-img image-scale-hover">
-                            <a href="blog-details.html"><img src="{% static 'assets/img/blog/blog-4-3.jpg' %}" alt="Blog Image" class="w-100"></a>
-                        </div>
-                        <div class="blog-content">
-                            <div class="tags">
-                                <a href="blog-details.html">Fresh</a>
-                            </div>
-                            <a href="blog-details.html" class="blog-date">Jan 21,2022</a>
-                            <h3 class="blog-title"><a href="blog-details.html">Creation timelines for the standard lorem</a></h3>
-                            <p class="blog-text">Nvidunt ut labore et dolore magna aliqu accusam et justo duo dolores et ea rebu Lorem ipsum dolor sit ametrit.</p>
-                        </div>
-                        <div class="meta-box">
-                            <a href="blog-details.html">Posted By Admin</a>
-                            <a href="blog-details.html">9 Comments</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4">
-                    <div class="vs-blog blog-style1">
-                        <div class="blog-img image-scale-hover">
-                            <a href="blog-details.html"><img src="{% static 'assets/img/blog/blog-4-4.jpg' %}" alt="Blog Image" class="w-100"></a>
-                        </div>
-                        <div class="blog-content">
-                            <div class="tags">
-                                <a href="blog-details.html">Natural</a>
-                            </div>
-                            <a href="blog-details.html" class="blog-date">Mar 1,2022</a>
-                            <h3 class="blog-title"><a href="blog-details.html">Lorem ipsum was purposefully designed</a></h3>
-                            <p class="blog-text">Nvidunt ut labore et dolore magna aliqu accusam et justo duo dolores et ea rebu Lorem ipsum dolor sit ametrit.</p>
-                        </div>
-                        <div class="meta-box">
-                            <a href="blog-details.html">Posted By Admin</a>
-                            <a href="blog-details.html">3 Comments</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--==============================
-        Blog Area
-    ==============================-->
-    <div class=" space-bottom">
-        <div class="container">
-            <div class="row gx-0 gy-4 justify-content-center text-center">
-                <div class="col-6 col-sm-4 col-md-4 col-lg-3 brand-style1">
-                    <img src="{% static 'assets/img/brand/logo-1-1.png' %}" alt="Barnad Image">
-                </div>
-                <div class="col-6 col-sm-4 col-md-4 col-lg-3 brand-style1">
-                    <img src="{% static 'assets/img/brand/logo-1-2.png' %}" alt="Barnad Image">
-                </div>
-                <div class="col-6 col-sm-4 col-md-4 col-lg-3 brand-style1">
-                    <img src="{% static 'assets/img/brand/logo-1-3.png' %}" alt="Barnad Image">
-                </div>
-                <div class="col-6 col-sm-4 col-md-4 col-lg-3 brand-style1">
-                    <img src="{% static 'assets/img/brand/logo-1-4.png' %}" alt="Barnad Image">
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--==============================
-    Banner Area
-    ==============================-->
-    <section class="banner-wrap1   ">
-        <div class="container-fluid">
-            <div class="row gy-30">
-                <div class="col-lg-4">
-                    <div class="banner-style1" data-bg-src="{% static 'assets/img/banner/banner-1-1.jpg' %}">
-                        <div class="banner-content">
-                            <span class="banner-subtitle">End of season -50%</span>
-                            <h3 class="banner-title">100% Organic Fresh Natural Food</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="banner-style1" data-bg-src="{% static 'assets/img/banner/banner-1-2.jpg' %}">
-                        <div class="banner-content">
-                            <span class="banner-subtitle">End of season -50%</span>
-                            <h3 class="banner-title">New Skin Food <span class="fw-light">100 natural origins</span></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="banner-style1" data-bg-src="{% static 'assets/img/banner/banner-1-3.jpg' %}">
-                        <div class="banner-content">
-                            <span class="banner-subtitle">End of season -50%</span>
-                            <h3 class="banner-title">Eat Organic & Healthy Food</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--==============================
-			Footer Area
-	==============================-->
     <footer class="footer-wrapper footer-layout2" data-bg-src="{% static 'assets/img/shape/footer-5-1.jpg' %}">
         <div class="container">
             <div class="widget-area">
@@ -501,56 +168,22 @@
                                 </div>
                                 <div class="footer-info">
                                     <i class="fas fa-phone-alt"></i>
-                                    <a href="tel:+387643932728">+387643932728</a>
+                                    <a href="tel:+387643932728">{{ info.phone }}</a>
                                 </div>
                                 <div class="footer-info">
                                     <i class="fas fa-map-marker-alt"></i>
-                                    Harbour House, 60 Purewell, Christchurch, England
+                                    {{ info.region }}
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4">
                         <div class="widget widget_nav_menu  footer-widget">
-                            <h3 class="widget_title">Useful Links</h3>
-                            <div class="menu-all-pages-container footer-links">
+                            <h3 class="widget_title">info</h3>
+                            <div class="menu">
                                 <ul class="menu">
-                                    <li><a href="#">Farm & Family</a></li>
-                                    <li><a href="#">Our Butchery</a></li>
-                                    <li><a href="#">Farm Shops</a></li>
-                                    <li><a href="#">Dartmoor Inn</a></li>
-                                    <li><a href="#">Market Garden</a></li>
-                                    <li><a href="#">Farm & Family</a></li>
-                                    <li><a href="#">Our Butchery</a></li>
-                                    <li><a href="#">Farm Shops</a></li>
-                                    <li><a href="#">Dartmoor Inn</a></li>
-                                    <li><a href="#">Market Garden</a></li>
+                                    <li><a href="#">{{ info.text }}</a></li>
                                 </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="widget footer-widget">
-                            <h3 class="widget_title">Instagram Photos</h3>
-                            <div class="sidebar-gallery">
-                                <div class="gallery-thumb">
-                                    <a class="popup-image" href="{% static 'assets/img/gallery/gal-2-1.jpg' %}"><img src="{% static 'assets/img/gallery/gal-2-1.jpg' %}" alt="Gallery Image" class="w-100"></a>
-                                </div>
-                                <div class="gallery-thumb">
-                                    <a class="popup-image" href="{% static 'assets/img/gallery/gal-2-2.jpg' %}"><img src="{% static 'assets/img/gallery/gal-2-2.jpg' %}" alt="Gallery Image" class="w-100"></a>
-                                </div>
-                                <div class="gallery-thumb">
-                                    <a class="popup-image" href="{% static 'assets/img/gallery/gal-2-3.jpg' %}"><img src="{% static 'assets/img/gallery/gal-2-3.jpg' %}" alt="Gallery Image" class="w-100"></a>
-                                </div>
-                                <div class="gallery-thumb">
-                                    <a class="popup-image" href="{% static 'assets/img/gallery/gal-2-4.jpg' %}"><img src="{% static 'assets/img/gallery/gal-2-4.jpg' %}" alt="Gallery Image" class="w-100"></a>
-                                </div>
-                                <div class="gallery-thumb">
-                                    <a class="popup-image" href="{% static 'assets/img/gallery/gal-2-5.jpg' %}"><img src="{% static 'assets/img/gallery/gal-2-5.jpg' %}" alt="Gallery Image" class="w-100"></a>
-                                </div>
-                                <div class="gallery-thumb">
-                                    <a class="popup-image" href="{% static 'assets/img/gallery/gal-2-6.jpg' %}"><img src="{% static 'assets/img/gallery/gal-2-6.jpg' %}" alt="Gallery Image" class="w-100"></a>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -567,9 +200,9 @@
                     </div>
                     <div class="col-auto d-none d-lg-block">
                         <div class="copyright-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i>Facebook</a>
-                            <a href="#"><i class="fab fa-twitter"></i>Twitter</a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i>Linked In</a>
+                            <a href="{{ info.facebook }}"><i class="fab fa-facebook-f"></i>Facebook</a>
+                            <a href="{{ info.teitter }}"><i class="fab fa-twitter"></i>Twitter</a>
+                            <a href="{{ info.linking }}"><i class="fab fa-linkedin-in"></i>Linked In</a>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f8f0; 
+        margin: 20px;
+      }
+      
+      a {
+        color: #339966;
+        text-decoration: none;
+        padding: 5px 10px;
+        border: 1px solid #3e9d6d;
+        border-radius: 5px;
+      }
+      
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid #ccc;
+      }
+      
+      th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ccc;
+      }
+      
+      th {
+        background-color: #e6f2e6;
+      }
+      </style>
+</head>
+<body>
+    <a href="{% url 'create' %}">create</a>
+    <table>
+        <h1>    </h1>
+        <tr>
+            <th>#</th>
+            <th>title</th>
+            <th>subtitle</th>
+            <th>action</th>
+        </tr>
+        {% for banner in banners %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{banner.title}}</td>
+            <td>{{banner.sub_title}}</td>
+            <td>{{ banner.is_active }}</td>
+            <td><a href="{% url 'delete' banner.id %}">delite</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

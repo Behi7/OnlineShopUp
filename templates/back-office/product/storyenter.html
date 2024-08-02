@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>enter_list</title>
+      <style>
+        body {
+          background-color: #f0fff0; /* Light green background */
+          font-family: Arial, sans-serif;
+          text-align: center; /* Center text globally */
+        }
+        table {
+          margin: 20px auto;
+          border-collapse: collapse;
+          width: 700px;
+        }
+        th {
+          padding: 10px;
+          background-color: #99cc99; /* Light green header */
+          color: white;
+          text-align: left;
+        }
+        td {
+          padding: 10px;
+          border: 1px solid #ddd;
+        }
+        .action {
+          text-align: right;
+        }
+        a {
+          color: #4CAF50; 
+          text-decoration: none;
+        }
+        .create-button {
+          display: block; 
+          margin: 20px auto;
+          background-color: #4CAF50;
+          color: white;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <a class="create-button" href="{% url 'createEnter' %}">create enter</a>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>product</th>
+            <th>enter_q</th>
+            <th>old_q</th>
+            <th>info</th>
+            <th>date</th>
+            <th>time</th>
+        </tr>
+        {% for enter in list_e %}
+        <tr>
+            <td> {{ enter.id }}</td>
+            <td>{{enter.product.name}}</td>
+            <td>{{enter.enter_quantity}}</td>
+            <td>{{ enter.old_quantity }}</td>
+            <td>{{ enter.info }}</td>
+            <td>{{ enter.date }}</td>
+            <td>{{ enter.time }}</td>
+            <td><a href="{% url 'createEnter' enter.id %}">update</a></td>
+            <td><a href="{% url 'enterDelete' enter.id %}">delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

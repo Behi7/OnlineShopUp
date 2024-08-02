@@ -3,17 +3,14 @@ from Goods import models
 
 
 def myCart(request):
-    cart = models.Cart.objects.get(
+    cart, _ = models.Cart.objects.get_or_create(
         author=request.user, 
         is_active=True)
     context = {}
+    cart_products = models.CartProduct.objects.filter(cart = cart)
     context['cart']=cart
-    cart_products = models.CartProduct.objects.filter(cart = cart.id)
     context['cart_products'] = cart_products
     return render(request, 'back-office/user/cart.html', context)
-
-
-
 
 def addProductToCart(request, id):
     quantity = request.GET.get('quantity', 1)
@@ -30,7 +27,6 @@ def addProductToCart(request, id):
             quantity=quantity
         )
     return redirect('/main/')
-
 
 def substractProductFromCart(request, id):
     code = id

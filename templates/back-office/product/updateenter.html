@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>create</title>
+    <style>
+        body {
+          background-color: #f0fff0; /* Light green background */
+          font-family: Arial, sans-serif;
+        }
+        form {
+          margin: 20px auto;
+          width: 500px;
+          border: 1px solid #99cc99; /* Light green border */
+          border-radius: 5px;
+          padding: 20px;
+        }
+        label {
+          display: block;
+          margin-bottom: 5px;
+          font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"],
+        textarea {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #99cc99; /* Light green border */
+          border-radius: 3px;
+        }
+        select {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #99cc99; /* Light green border */
+          border-radius: 3px;
+        }
+        .button {
+          background-color: #4CAF50; /* Green button */
+          color: white;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+        .button:hover {
+          background-color: #3e8e41; /* Darker green on hover */
+        }
+        </style>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="name">
+        <input type="number" name="quantity">
+        <input type="number" name="price">
+        <textarea name="description">
+
+        </textarea>
+        <select name="category_id" id="">
+            {% for category in categorys %}
+            <option value="{{category.id}}">{{category.name}}</option>
+            {% endfor %}
+        </select>
+        <input type="file" multiple name="images">
+        <button type="submit">saqlash</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!--==============================
+    Mobile Menu
+  ============================== -->
+    <div class="vs-menu-wrapper">
+        <div class="vs-menu-area">
+            <button class="vs-menu-toggle"><i class="fal fa-times"></i></button>
+            <div class="mobile-logo">
+                <a href="{% url 'index' %}"><img src="static/assets/img/logo.svg" alt="Foodano"></a>
+            </div>
+            <div class="vs-mobile-menu link-inherit"></div><!-- Menu Will Append With Javascript -->
+        </div>
+    </div>
+    <!--==============================
+        Header Area
+    ==============================-->
+    <header class="header-wrapper header-layout3 header3-margin ">
+        <div class="container py-30">
+            <div class="row align-items-center">
+                <div class="col-6">
+                    <div class="header-logo">
+                        <a href="{% url 'index' %}"><img src="{% static 'assets/img/logo.svg' %}" alt="Foodano"></a>
+                    </div>
+                </div>
+                <div class="col-6 text-end">
+                    <button type="button" class="vs-menu-toggle d-inline-block d-lg-none"><i class="far fa-bars"></i></button>
+                    <div class="head-top-links text-body2 d-none d-lg-block">
+                        <a href="{% url 'wishList' %}" class="icon-btn has-badge bg3 me-3"><i class="fal fa-heart"></i><span class="badge">0</span></a>
+                        <a href="{% url 'myCart' %}" class="icon-btn has-badge"><i class="fal fa-shopping-cart"></i><span class="badge">0</span></a>
+                        <span class="icon-btn bg4"><i class="fal fa-user"></i></span>
+                        <ul>
+                            {% if user %}
+                            <li>{{ user.username }}</li>
+                            <li><a href="{% url 'log_out' %}">logout</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container d-none d-lg-block">
+            <div class="header3-inner position-relative">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-xl-7">
+                        <nav class="main-menu menu-style1 mobile-menu-active menu-style2">
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--==============================
+    Breadcumb
+============================== -->
+    <div class="breadcumb-wrapper breadcumb-layout1 bg-fluid pt-200 pb-200" data-bg-src="static/assets/img/breadcumb/breadcumb-img-1.jpg">
+        <div class="container">
+            <div class="breadcumb-content text-center">
+                <h1 class="breadcumb-title">Organic</h1>
+                <ul class="breadcumb-menu-style1 mx-auto">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li class="active">Shop</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--==============================
+    Feature Products
+    ==============================-->
+    <section class="vs-shop-wrapper position-relative space-top space-md-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-xl-9">
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="tab-grid" role="tabpanel" aria-labelledby="tab-shop-grid">
+                            <div class="row">
+                                {% for product in products %}
+                                <div class="col-sm-6 col-xl-4">
+                                    <div class="vs-product-box1 thumb_swap">
+                                        <div class="product-tag1">sale</div>
+                                        <div class="product-img">
+                                            <a href="shop-details.html"><img src="{{ product.img.url }}" alt="Product Image" class="w-100"></a>
+                                        </div>
+                                        <div class="product-content">
+                                            <div class="actions-btn">
+                                                <a href="{% url 'addProductToCart' product.id %}"><i class="fal fa-cart-plus"></i></a>
+                                                <a href="static/assets/img/shop/product-1-1.png" class="popup-image"><i class="far fa-search"></i></a>
+                                                {% if not product.is_active %}
+                                                <a href="{% url 'wishP' product.id %}" class="icon-btn" ><i class="fal fa-heart" style="position: relative; top: 12px;"><button type="submit" style="opacity: 0;"></button></i></a>
+                                                {% else %}
+                                                <a href="{% url 'wishP' product.id %}" class="icon-btn" style=" background-color: black; position: absolute;" ><i class="fal fa-heart" style="position: relative; top: 10px; color: brown;"><button type="submit" style="opacity: 0;"></button></i></a>
+                                                {% endif %}
+                                            </div>
+                                            <h4 class="product-title h5 mb-0"><a href="shop-details.html">{{ product.name }}</a></h4>
+                                            <span class="price font-theme"><strong>{{ product.price }}</strong></span>
+                                            <p class="m-0 rating fs-xs text-theme lh-base">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--==============================
+			Footer Area
+	==============================-->
+    <div class="bg2" data-bg-src="static/assets/img/footer/footer-bg-1.jpg">
+        <!--==============================
+    Subscribe Area
+    ==============================-->
+
+    <!--********************************
+			Code End  Here 
+	******************************** -->
+
+
+    <!-- Scroll Top Top Button -->
+    <a href="#" class="scrollToTop"><i class="far fa-angle-up"></i></a>
+
+
+
+
+    <!--==============================
+        All Js File
+    ============================== -->
+    <!-- Jquery -->
+    <script src="static/assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <!-- Slick Slider -->
+    <script src="static/assets/js/slick.min.js"></script>
+    <!-- <script src="static/assets/js/app.min.js"></script> -->
+    <!-- Layerslider -->
+    <script src="static/assets/js/layerslider.utils.js"></script>
+    <script src="static/assets/js/layerslider.transitions.js"></script>
+    <script src="static/assets/js/layerslider.kreaturamedia.jquery.js"></script>
+    <!-- Bootstrap -->
+    <script src="static/assets/js/bootstrap.bundle.min.js"></script>
+    <!-- Date Picker -->
+    <script src="static/assets/js/jquery.datetimepicker.min.js"></script>
+    <!-- Filter -->
+    <script src="static/assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="static/assets/js/isotope.pkgd.min.js"></script>
+    <!-- Magnific Popup -->
+    <script src="static/assets/js/jquery.magnific-popup.min.js"></script>
+    <!-- Jquery UI -->
+    <script src="static/assets/js/jquery-ui.min.js"></script>
+    <!-- WOW JS (Animation JS) -->
+    <script src="static/assets/js/wow.min.js"></script>
+    <!-- Custom Carousel -->
+    <script src="static/assets/js/vscustom-carousel.min.js"></script>
+    <!-- Mobile Menu -->
+    <script src="static/assets/js/vsmenu.min.js"></script>
+    <!-- Form Js -->
+    <script src="static/assets/js/ajax-mail.js"></script>
+    <!-- Main Js File -->
+    <script src="static/assets/js/main.js"></script>
+
+</body>
+
+</html>
+
+{% endblock %}
