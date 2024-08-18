@@ -26,7 +26,7 @@ def addProductToCart(request, id):
             cart=cart,
             quantity=quantity
         )
-    return redirect('/main/')
+    return redirect('index')
 
 def substractProductFromCart(request, id):
     code = id
@@ -42,7 +42,7 @@ def substractProductFromCart(request, id):
 def deleteProductCart(request, id):
     product_cart = models.CartProduct.objects.get(id=id)
     product_cart.delete()
-    return redirect('/main/cart/list/')
+    return redirect('cart/list/')
 
 
 def createOrder(request, id):

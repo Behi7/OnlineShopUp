@@ -33,3 +33,15 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, *args, **kwargs):
         user = User.objects.create_user(*args, **kwargs)
         return user
+    
+
+class CartSerializers(serializers.ModelSerializer):
+        class Meta:
+            model = models.Cart
+            fields = '__all__'
+
+
+class CartProductSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = models.CartProduct
+        fields = '__all__'
