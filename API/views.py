@@ -1,5 +1,4 @@
 from rest_framework import viewsets
-from .serializers import ProductListSerializers, ProducDetailSerializers, CategoryListSerializers, UserSerializer, CartSerializers, CartProductSerializers
 from Goods import models
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -9,6 +8,11 @@ from django.contrib.auth import authenticate, login, logout
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.authentication import TokenAuthentication
 from django.contrib.auth.models import User
+from .serializers import (ProductListSerializers, ProducDetailSerializers, 
+                          CategoryListSerializers, UserSerializer, CartSerializers, 
+                          CartProductSerializers, BannerSerializers, InfoSerializers, 
+                          WishSerializers, EnterProductSerializers, OrderSerializers)
+
 
 
 class ProductListViews(generics.ListAPIView):
@@ -107,8 +111,58 @@ class LogoutView(APIView):
 def register(request):
      username = request.data.get('username')
      password = request.data.get('password')
-     User,object.create_user(
+     User.object.create_user(
           username = username,
           password = password
      )
      return Response({'status':'success'})
+
+
+class BannerDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.Banner.objects.all()
+    serializer_class = BannerSerializers
+
+
+class BannerView(generics.ListCreateAPIView):
+    queryset = models.Banner.objects.all()
+    serializer_class = BannerSerializers
+
+
+class InfoDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.Info.objects.all()
+    serializer_class = InfoSerializers
+
+
+class InfoView(generics.ListCreateAPIView):
+    queryset = models.Info.objects.all()
+    serializer_class = InfoSerializers
+
+
+class WishDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.WishList.objects.all()
+    serializer_class = WishSerializers
+
+
+class WishListView(generics.ListCreateAPIView):
+    queryset = models.WishList.objects.all()
+    serializer_class = WishSerializers
+
+
+class EnterDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.EnterProduct.objects.all()
+    serializer_class = EnterProductSerializers
+
+
+class EnterListView(generics.ListCreateAPIView):
+    queryset = models.EnterProduct.objects.all()
+    serializer_class = EnterProductSerializers
+
+
+class OrderDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.Order.objects.all()
+    serializer_class = OrderSerializers
+
+
+class OrderListView(generics.ListCreateAPIView):
+    queryset = models.Order.objects.all()
+    serializer_class = OrderSerializers

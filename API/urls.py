@@ -11,5 +11,15 @@ urlpatterns = [
     path('cart', views.cartGet),
     path('add-product', views.add_to_cart),
     path('remowe-product', views.delete_to_cart),
-    path('log-out', views.LogoutView.as_view())
+    path('log-out', views.LogoutView.as_view()),
+    path('order', views.OrderListView.as_view()),
+    path('order/<int:pk>/', views.OrderDetailView.as_view()),
+    path('info', views.InfoView.as_view()),
+    path('info/<int:pk>/', views.InfoDetailView.as_view()),  
+    path('enter-product', views.EnterListView.as_view()),
+    path('enter-product/<int:pk>/', views.EnterDetailView.as_view()),
+    path('banner', views.BannerView.as_view()),
+    path('banner/<int:pk>/', views.BannerDetailView.as_view()),
+    path('wish', views.WishListView.as_view()),
+    path('wish/<int:pk>/', views.WishDetailView.as_view()),
     ]
