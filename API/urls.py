@@ -22,4 +22,5 @@ urlpatterns = [
     path('banner/<int:pk>/', views.BannerDetailView.as_view()),
     path('wish', views.WishListView.as_view()),
     path('wish/<int:pk>/', views.WishDetailView.as_view()),
+    
     ]
